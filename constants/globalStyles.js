@@ -1,0 +1,27 @@
+export default {
+  light: {
+    clPrimary: "#6200EE",
+    clSecondary: "#FFFFFF",
+    clStatusBar: "#3700B3",
+    clBlack: "#000",
+    clWhite: "#fff",
+    clShadow: "#777",
+    clPrimeShadow: "rgba(3, 3, 3, 0.1)",
+    clFont: "#333",
+    fontStyle: "lato",
+    fontStyleLight: "latoLight",
+  },
+  dark: {
+    clPrimary: "#202020",
+    clSecondary: "#121212",
+    clHighlight: "#BB86FC",
+    clStatusBar: "#000000",
+    clBlack: "#000",
+    clWhite: "#fff",
+    clShadow: "#777",
+    clPrimeShadow: "rgba(3, 3, 3, 0.1)",
+    clFont: "#E1E1E1",
+    fontStyle: "lato",
+    fontStyleLight: "latoLight",
+  },
+};
