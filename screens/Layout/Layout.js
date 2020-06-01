@@ -1,5 +1,9 @@
 import React, { useContext } from "react";
 
+// navigator
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
 // context
 import AppStore from "../../contexts/GlobalContext";
 
@@ -18,6 +22,8 @@ import MealsScreen from "../MealsScreen/MealsScreen";
 // sc
 import { RootLayout } from "./Layout.styles";
 
+const Stack = createStackNavigator();
+
 const Layout = ({ fontLoaded }) => {
   const {
     theme,
@@ -34,15 +40,38 @@ const Layout = ({ fontLoaded }) => {
   return fontLoaded ? (
     <RootLayout theme={theme}>
       {orientation === "portrait" ? <StatusBar /> : null}
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Categories"
+          // stack shared options
+          // screenOptions={{ title: "Recipeious" }}
+        >
+          <Stack.Screen
+            name="Categories"
+            component={CategoriesScreen}
+            // stack screen own options
+            options={{ title: "Categories" }}
+          />
+          <Stack.Screen
+            name="Meals"
+            component={MealsScreen}
+            options={{ title: "Meals" }}
+          />
+          <Stack.Screen
+            name="MealDetails"
+            component={MealDetailsScreen}
+            options={{ title: "Meal Details" }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
       <Button
         title={"click"}
         onPress={() => (theme === "dark" ? setThemeLight() : setThemeDark())}
       />
-      <CategoriesScreen />
+      {/*
       <FavoritesScreen />
       <FiltersScreen />
-      <MealDetailsScreen />
-      <MealsScreen />
+      */}
     </RootLayout>
   ) : (
     <Spinner size="large" />
