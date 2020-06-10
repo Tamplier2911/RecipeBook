@@ -16,15 +16,18 @@ import {
   MealsButtonSeparator,
 } from "./MealsScreen.styles";
 
-const MealsScreen = ({ navigation }) => {
+const MealsScreen = ({ navigation, route }) => {
   const { theme } = useContext(AppStore);
   const { navigate } = navigation;
+  const {
+    params: { title },
+  } = route;
   return (
     <MealsScreenView theme={theme}>
       <MealsScreenTop>
-        <MealsScreenText>Meals Screen Top</MealsScreenText>
+        <MealsScreenText>{title}</MealsScreenText>
       </MealsScreenTop>
-      <MealsScreenBot>
+      {/* <MealsScreenBot>
         <MealsButtonView>
           <Button title={"back"} onPress={() => navigate("Categories")} />
         </MealsButtonView>
@@ -35,7 +38,7 @@ const MealsScreen = ({ navigation }) => {
             onPress={() => navigate("MealDetails")}
           />
         </MealsButtonView>
-      </MealsScreenBot>
+      </MealsScreenBot> */}
     </MealsScreenView>
   );
 };

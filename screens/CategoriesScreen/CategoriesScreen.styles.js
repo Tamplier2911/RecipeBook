@@ -16,8 +16,14 @@ export const CategoriesFlatList = styled(FlatList)`
   flex: 1;
 `;
 
+export const CategoriesItemTouchable = styled.TouchableOpacity`
+  flex: 1;
+`;
+
 export const CategoriesItemView = styled.View`
   flex: 1;
+  padding: 5px;
+  ${({ color }) => `background-color: ${color};`}
 `;
 
 export const CategoriesItemText = styled.Text``;

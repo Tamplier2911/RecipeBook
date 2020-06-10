@@ -10,6 +10,7 @@ import Button from "../../components/Button/Button";
 import {
   CategoriesScreenView,
   CategoriesFlatList,
+  CategoriesItemTouchable,
   CategoriesItemView,
   CategoriesItemText,
 } from "./CategoriesScreen.styles";
@@ -37,9 +38,16 @@ const CategoriesScreen = ({ navigation }) => {
         renderItem={(data) => {
           const { id, color, title } = data.item;
           return (
-            <CategoriesItemView>
-              <CategoriesItemText>{title}</CategoriesItemText>
-            </CategoriesItemView>
+            <CategoriesItemTouchable
+              activeOpacity={0.5}
+              onPress={() =>
+                navigate("Meals", { title: `${title}`, color: `${color}` })
+              }
+            >
+              <CategoriesItemView color={color}>
+                <CategoriesItemText>{title}</CategoriesItemText>
+              </CategoriesItemView>
+            </CategoriesItemTouchable>
           );
         }}
       />

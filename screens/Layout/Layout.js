@@ -22,6 +22,9 @@ import MealsScreen from "../MealsScreen/MealsScreen";
 // sc
 import { RootLayout } from "./Layout.styles";
 
+// global styles
+import globalStyles from "../../constants/globalStyles";
+
 const Stack = createStackNavigator();
 
 const Layout = ({ fontLoaded }) => {
@@ -44,7 +47,21 @@ const Layout = ({ fontLoaded }) => {
         <Stack.Navigator
           initialRouteName="Categories"
           // stack shared options
-          // screenOptions={{ title: "Recipeious" }}
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: `${globalStyles[theme].clPrimary}`,
+              elevation: 0, // remove shadow on Android
+              shadowOpacity: 0, // remove shadow on iOS
+            },
+            headerTintColor: `${
+              theme === "dark"
+                ? globalStyles[theme].clFont
+                : globalStyles[theme].clWhite
+            }`,
+            headerTitleStyle: {
+              fontFamily: "lato",
+            },
+          }}
         >
           <Stack.Screen
             name="Categories"
@@ -55,7 +72,18 @@ const Layout = ({ fontLoaded }) => {
           <Stack.Screen
             name="Meals"
             component={MealsScreen}
-            options={{ title: "Meals" }}
+            options={({ route }) => ({
+              title: route.params.title,
+              headerStyle: {
+                backgroundColor: `${
+                  theme === "dark"
+                    ? globalStyles[theme].clPrimary
+                    : route.params.color
+                }`,
+                elevation: 0, // remove shadow on Android
+                shadowOpacity: 0, // remove shadow on iOS
+              },
+            })}
           />
           <Stack.Screen
             name="MealDetails"
