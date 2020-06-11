@@ -46,12 +46,13 @@ const Layout = ({ fontLoaded }) => {
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Categories"
+          // mode="modal"
           // stack shared options
           screenOptions={{
             headerStyle: {
               backgroundColor: `${globalStyles[theme].clPrimary}`,
-              elevation: 0, // remove shadow on Android
-              shadowOpacity: 0, // remove shadow on iOS
+              elevation: `${theme === "dark" ? 0 : 4}`, // remove shadow on Android
+              shadowOpacity: `${theme === "dark" ? 0 : 4}`, // remove shadow on iOS
             },
             headerTintColor: `${
               theme === "dark"
@@ -80,8 +81,8 @@ const Layout = ({ fontLoaded }) => {
                     ? globalStyles[theme].clPrimary
                     : route.params.color
                 }`,
-                elevation: 0, // remove shadow on Android
-                shadowOpacity: 0, // remove shadow on iOS
+                elevation: `${theme === "dark" ? 0 : 4}`, // remove shadow on Android
+                shadowOpacity: `${theme === "dark" ? 0 : 4}`, // remove shadow on iOS
               },
             })}
           />

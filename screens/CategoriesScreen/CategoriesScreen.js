@@ -4,25 +4,20 @@ import React, { useContext } from "react";
 import AppStore from "../../contexts/GlobalContext";
 
 // component
-import Button from "../../components/Button/Button";
+import MealCategory from "../../components/MealCategory/MealCategory";
 
 // sc
 import {
   CategoriesScreenView,
   CategoriesFlatList,
-  CategoriesItemTouchable,
-  CategoriesItemView,
-  CategoriesItemText,
 } from "./CategoriesScreen.styles";
 
 // constants
 import { categoriesData } from "../../constants/categoriesData";
-import { View, Text } from "react-native";
 
 const CategoriesScreen = ({ navigation }) => {
   const { theme } = useContext(AppStore);
   const { navigate, push } = navigation;
-  //
 
   // navigate - navigate to existing route, opens when there no such route on stack
   // push - push new route on to the stack, possibly with params
@@ -38,16 +33,14 @@ const CategoriesScreen = ({ navigation }) => {
         renderItem={(data) => {
           const { id, color, title } = data.item;
           return (
-            <CategoriesItemTouchable
-              activeOpacity={0.5}
-              onPress={() =>
+            <MealCategory
+              color={color}
+              title={title}
+              categoryId={id}
+              action={() =>
                 navigate("Meals", { title: `${title}`, color: `${color}` })
               }
-            >
-              <CategoriesItemView color={color}>
-                <CategoriesItemText>{title}</CategoriesItemText>
-              </CategoriesItemView>
-            </CategoriesItemTouchable>
+            />
           );
         }}
       />

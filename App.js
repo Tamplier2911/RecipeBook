@@ -1,4 +1,5 @@
 import React from "react";
+import { enableScreens } from "react-native-screens";
 
 // context
 import { GlobalStore } from "./contexts/GlobalContext";
@@ -9,7 +10,10 @@ import { useFonts } from "@use-expo/font";
 // screens
 import Layout from "./screens/Layout/Layout";
 
-export default function App() {
+// optimize screens to be compiled as native widgets
+enableScreens();
+
+const App = () => {
   const [fontLoaded] = useFonts({
     lato: require("./assets/Fonts/Lato-Regular.ttf"),
     latoLight: require("./assets/Fonts/Lato-Light.ttf"),
@@ -19,7 +23,9 @@ export default function App() {
       <Layout fontLoaded={fontLoaded} />
     </GlobalStore>
   );
-}
+};
+
+export default App;
 
 // npm install --save react-navigation-stack
 // Also add this import in the file where you are using createStackNavigator:

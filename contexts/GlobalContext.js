@@ -1,5 +1,16 @@
 import React, { useEffect, useState, createContext } from "react";
 import { Dimensions, Platform } from "react-native";
+/*
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+
+const temp = {
+  height: hp("70%"), // height persentage
+  width: wp("80%"), // width persentage
+};
+*/
 
 const Context = createContext({});
 
