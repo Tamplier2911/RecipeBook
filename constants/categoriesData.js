@@ -8,14 +8,16 @@ class Category {
   }
 }
 
+// used in categoriesScreen
 export const categoriesData = [
-  new Category("category-italian", "Italian", "#2bba28"),
-  new Category("category-quick", "Quick & Easy", "#5d2aea"),
-  new Category("category-hamburgers", "Hamburgers", "#7c7c7c"),
-  new Category("category-german", "German", "#6d5e54"),
-  new Category("category-exotic", "Exotic", "#82e26c"),
-  new Category("category-breakfast", "Breakfast", "#51c8ff"),
-  new Category("category-asian", "Asian", "#ff51b6"),
-  new Category("category-french", "French", "#303bba"),
-  new Category("category-simmer", "Summer", "#ff6932"),
+  new Category("categoryItalian", "Italian", "#2bba28"),
+  new Category("categoryQuick", "Quick & Easy", "#5d2aea"),
+  new Category("categoryHamburgers", "Hamburgers", "#7c7c7c"),
+  new Category("categoryGerman", "German", "#6d5e54"),
+  new Category("categoryExotic", "Exotic", "#82e26c"),
+  new Category("categoryLight", "Light & Lovely", "#368dff"),
+  new Category("categoryBreakfast", "Breakfast", "#51c8ff"),
+  new Category("categoryAsian", "Asian", "#ff51b6"),
+  new Category("categoryFrench", "French", "#303bba"),
+  new Category("categorySummer", "Summer", "#ff6932"),
 ];

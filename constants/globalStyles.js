@@ -10,6 +10,7 @@ export default {
     clFont: "#333",
     fontStyle: "lato",
     fontStyleLight: "latoLight",
+    clPlaceholder: "rgba(100, 0, 240, 0.486)",
   },
   dark: {
     clPrimary: "#202020",
@@ -23,5 +24,6 @@ export default {
     clFont: "#E1E1E1",
     fontStyle: "lato",
     fontStyleLight: "latoLight",
+    clPlaceholder: "rgba(188, 136, 252, 0.502)",
   },
 };

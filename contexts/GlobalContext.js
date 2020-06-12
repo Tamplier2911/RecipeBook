@@ -24,8 +24,16 @@ export const GlobalStore = ({ children }) => {
       Dimensions.get("window").width > Dimensions.get("window").height
         ? "landscape"
         : "portrait",
+    recipeModalHidden: true,
   });
-  const { theme, platform, width, height, orientation } = appGlobalState;
+  const {
+    theme,
+    platform,
+    width,
+    height,
+    orientation,
+    recipeModalHidden,
+  } = appGlobalState;
 
   useEffect(() => {
     const adjustDeviceValues = () => {
@@ -52,6 +60,16 @@ export const GlobalStore = ({ children }) => {
     setAppGlobalState({ ...appGlobalState, theme: "dark" });
   };
 
+  /**
+   * @function ToggleRecipeModel - toggle recipe modal true / false
+   */
+  const toggleRecipeModel = () => {
+    setAppGlobalState((appGlobalState) => ({
+      ...appGlobalState,
+      recipeModalHidden: !recipeModalHidden,
+    }));
+  };
+
   return (
     <Context.Provider
       value={{
@@ -62,6 +80,8 @@ export const GlobalStore = ({ children }) => {
         orientation,
         setThemeLight,
         setThemeDark,
+        recipeModalHidden,
+        toggleRecipeModel,
       }}
     >
       {children}

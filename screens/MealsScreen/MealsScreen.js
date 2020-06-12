@@ -6,39 +6,49 @@ import AppStore from "../../contexts/GlobalContext";
 // component
 import Button from "../../components/Button/Button";
 
-// component
+// constants
+import { mealsData } from "../../constants/mealsData";
+
+// sc
 import {
   MealsScreenView,
-  MealsScreenTop,
-  MealsScreenText,
-  MealsScreenBot,
-  MealsButtonView,
-  MealsButtonSeparator,
+  MealsScreenFlatList,
+  MealView,
+  MealText,
 } from "./MealsScreen.styles";
 
 const MealsScreen = ({ navigation, route }) => {
   const { theme } = useContext(AppStore);
   const { navigate } = navigation;
   const {
-    params: { title },
+    params: { title, id },
   } = route;
+  const meals = mealsData[id];
   return (
     <MealsScreenView theme={theme}>
-      <MealsScreenTop>
-        <MealsScreenText>{title}</MealsScreenText>
-      </MealsScreenTop>
-      {/* <MealsScreenBot>
-        <MealsButtonView>
-          <Button title={"back"} onPress={() => navigate("Categories")} />
-        </MealsButtonView>
-        <MealsButtonSeparator />
-        <MealsButtonView>
-          <Button
-            title={"meal details"}
-            onPress={() => navigate("MealDetails")}
-          />
-        </MealsButtonView>
-      </MealsScreenBot> */}
+      <MealsScreenFlatList
+        numColumns={1}
+        data={meals}
+        renderItem={(data) => {
+          const {
+            title,
+            complexity,
+            imageUrl,
+            duration,
+            ingredients,
+            steps,
+            isGlutenFree,
+            isLactoseFree,
+            isVegan,
+            isVegetarian,
+          } = data.item;
+          return (
+            <MealView>
+              <MealText>{title}</MealText>
+            </MealView>
+          );
+        }}
+      />
     </MealsScreenView>
   );
 };

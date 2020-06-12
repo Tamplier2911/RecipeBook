@@ -10,7 +10,8 @@ import AppStore from "../../contexts/GlobalContext";
 // components
 import StatusBar from "../../components/StatusBar/StatusBar";
 import Spinner from "../../components/Spinner/Spinner";
-import Button from "../../components/Button/Button";
+import HeaderRightContainer from "../../components/HeaderRightContainer/HeaderRightContainer";
+import AddRecipeModal from "../../components/AddRecipeModal/AddRecipeModal";
 
 // screens
 import CategoriesScreen from "../CategoriesScreen/CategoriesScreen";
@@ -62,6 +63,7 @@ const Layout = ({ fontLoaded }) => {
             headerTitleStyle: {
               fontFamily: "lato",
             },
+            headerRight: () => <HeaderRightContainer />,
           }}
         >
           <Stack.Screen
@@ -93,14 +95,7 @@ const Layout = ({ fontLoaded }) => {
           />
         </Stack.Navigator>
       </NavigationContainer>
-      <Button
-        title={"click"}
-        onPress={() => (theme === "dark" ? setThemeLight() : setThemeDark())}
-      />
-      {/*
-      <FavoritesScreen />
-      <FiltersScreen />
-      */}
+      <AddRecipeModal />
     </RootLayout>
   ) : (
     <Spinner size="large" />

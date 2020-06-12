@@ -12,7 +12,7 @@ import {
   MealCategoryText,
 } from "./MealCategory.styles";
 
-const MealCategory = ({ color, title, categoryId, action }) => {
+const MealCategory = ({ color, title, action }) => {
   const { width, theme, platform } = useContext(AppStore);
   return platform === "ios" ? (
     <MealCategoryTouchable activeOpacity={0.5} onPress={action}>
