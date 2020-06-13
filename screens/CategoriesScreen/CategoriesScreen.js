@@ -36,9 +36,7 @@ const CategoriesScreen = ({ navigation }) => {
             <MealCategory
               color={color}
               title={title}
-              action={() =>
-                navigate("Meals", { title: `${title}`, color: `${color}`, id })
-              }
+              action={() => navigate("Meals", { title, color, id })}
             />
           );
         }}

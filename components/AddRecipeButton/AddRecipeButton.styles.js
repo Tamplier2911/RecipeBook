@@ -7,6 +7,7 @@ export const AddRecipeButtonView = styled.View`
   align-items: center;
   justify-content: center;
   width: 30px;
+  margin-right: 5px;
 `;
 
 export const AddRecipeButtonText = styled.Text``;

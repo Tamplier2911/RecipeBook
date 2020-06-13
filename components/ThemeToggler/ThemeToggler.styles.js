@@ -7,6 +7,7 @@ export const ThemeTogglerView = styled.View`
   align-items: center;
   justify-content: center;
   width: 30px;
+  margin-right: 5px;
 `;
 
 export const ThemeTogglerText = styled.Text``;

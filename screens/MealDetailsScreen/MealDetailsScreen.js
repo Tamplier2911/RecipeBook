@@ -15,13 +15,27 @@ import {
   MealDetailsButtonSeparator,
 } from "./MealDetailsScreen.styles";
 
-const MealDetailsScreen = ({ navigation }) => {
+const MealDetailsScreen = ({ navigation, route }) => {
   const { theme } = useContext(AppStore);
   const { navigate } = navigation;
+
+  const {
+    title,
+    complexity,
+    imageUrl,
+    duration,
+    ingredients,
+    steps,
+    isGlutenFree,
+    isLactoseFree,
+    isVegan,
+    isVegetarian,
+  } = route?.params?.meal;
+
   return (
     <MealDetailsScreenView theme={theme}>
       <MealDetailsScreenTop>
-        <MealDetailsScreenText>MealDetails Screen Top</MealDetailsScreenText>
+        <MealDetailsScreenText>{title}</MealDetailsScreenText>
       </MealDetailsScreenTop>
       <MealDetailsScreenBot>
         <MealDetailsButtonView>

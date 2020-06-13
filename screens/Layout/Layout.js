@@ -21,7 +21,14 @@ import MealDetailsScreen from "../MealDetailsScreen/MealDetailsScreen";
 import MealsScreen from "../MealsScreen/MealsScreen";
 
 // sc
-import { RootLayout } from "./Layout.styles";
+import {
+  RootLayout,
+  // style function
+  headerShadowProperties,
+  headerSharedBgColorProperties,
+  headerSharedTitleValueProperties,
+  getSharedThemeColor,
+} from "./Layout.styles";
 
 // global styles
 import globalStyles from "../../constants/globalStyles";
@@ -52,16 +59,12 @@ const Layout = ({ fontLoaded }) => {
           screenOptions={{
             headerStyle: {
               backgroundColor: `${globalStyles[theme].clPrimary}`,
-              elevation: `${theme === "dark" ? 0 : 4}`, // remove shadow on Android
-              shadowOpacity: `${theme === "dark" ? 0 : 4}`, // remove shadow on iOS
+              ...headerShadowProperties(theme),
             },
-            headerTintColor: `${
-              theme === "dark"
-                ? globalStyles[theme].clFont
-                : globalStyles[theme].clWhite
-            }`,
+            headerTintColor: getSharedThemeColor(theme, globalStyles),
             headerTitleStyle: {
               fontFamily: "lato",
+              color: getSharedThemeColor(theme, globalStyles),
             },
             headerRight: () => <HeaderRightContainer />,
           }}
@@ -76,22 +79,23 @@ const Layout = ({ fontLoaded }) => {
             name="Meals"
             component={MealsScreen}
             options={({ route }) => ({
-              title: route.params.title,
+              title: headerSharedTitleValueProperties(route),
               headerStyle: {
-                backgroundColor: `${
-                  theme === "dark"
-                    ? globalStyles[theme].clPrimary
-                    : route.params.color
-                }`,
-                elevation: `${theme === "dark" ? 0 : 4}`, // remove shadow on Android
-                shadowOpacity: `${theme === "dark" ? 0 : 4}`, // remove shadow on iOS
+                ...headerSharedBgColorProperties(theme, route),
+                ...headerShadowProperties(theme),
               },
             })}
           />
           <Stack.Screen
             name="MealDetails"
             component={MealDetailsScreen}
-            options={{ title: "Meal Details" }}
+            options={({ route }) => ({
+              title: headerSharedTitleValueProperties(route),
+              headerStyle: {
+                ...headerSharedBgColorProperties(theme, route),
+                ...headerShadowProperties(theme),
+              },
+            })}
           />
         </Stack.Navigator>
       </NavigationContainer>
