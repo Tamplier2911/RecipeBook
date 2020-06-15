@@ -15,6 +15,7 @@ export const MealCategoryViewAndroid = styled.View`
   padding: 5px;
   border-radius: 5px;
   overflow: hidden;
+  elevation: 5;
 `;
 
 export const MealCategoryView = styled.View`
@@ -26,7 +27,7 @@ export const MealCategoryView = styled.View`
   align-self: center;
   flex: 1;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: center;
   border-radius: 5px;
   padding: 5px;
   margin-bottom: 10px;
@@ -37,12 +38,23 @@ export const MealCategoryView = styled.View`
   elevation: 5;
 `;
 
+export const MealCategoryTextView = styled.View`
+  background-color: ${({ theme }) =>
+    theme === "dark"
+      ? globalStyles[theme].clSecondary
+      : globalStyles[theme].clSecondary};
+  padding: 2px 10px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-right: -5px;
+`;
+
 export const MealCategoryText = styled.Text`
   font-family: "lato";
   font-size: 18px;
   ${({ theme }) =>
     theme === "dark"
       ? `color: ${globalStyles[theme].clHighlight};`
-      : `color: ${globalStyles[theme].clWhite};`}
+      : `color: ${globalStyles[theme].clPrimary};`}
   ${() => ({ textAlign: "right" })}
 `;

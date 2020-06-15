@@ -18,6 +18,7 @@ export const GlobalStore = ({ children }) => {
   const [appGlobalState, setAppGlobalState] = useState({
     theme: "light",
     platform: Platform.OS,
+    version: Platform.Version,
     width: Dimensions.get("window").width,
     height: Dimensions.get("window").height,
     orientation:
@@ -29,6 +30,7 @@ export const GlobalStore = ({ children }) => {
   const {
     theme,
     platform,
+    version,
     width,
     height,
     orientation,
@@ -75,6 +77,7 @@ export const GlobalStore = ({ children }) => {
       value={{
         theme,
         platform,
+        version,
         width,
         height,
         orientation,

@@ -9,29 +9,34 @@ import {
   MealCategoryTouchableAndroid,
   MealCategoryViewAndroid,
   MealCategoryView,
+  MealCategoryTextView,
   MealCategoryText,
 } from "./MealCategory.styles";
 
 const MealCategory = ({ color, title, action }) => {
-  const { width, theme, platform } = useContext(AppStore);
-  return platform === "ios" ? (
-    <MealCategoryTouchable activeOpacity={0.5} onPress={action}>
-      <MealCategoryView color={color} width={width} theme={theme}>
-        <MealCategoryText theme={theme} numberOfLines={2}>
-          {title}
-        </MealCategoryText>
-      </MealCategoryView>
-    </MealCategoryTouchable>
-  ) : (
+  const { width, theme, platform, version } = useContext(AppStore);
+  return platform === "android" && version >= 21 ? (
     <MealCategoryViewAndroid>
       <MealCategoryTouchableAndroid onPress={action}>
         <MealCategoryView color={color} width={width} theme={theme}>
-          <MealCategoryText theme={theme} numberOfLines={2}>
-            {title}
-          </MealCategoryText>
+          <MealCategoryTextView theme={theme}>
+            <MealCategoryText theme={theme} numberOfLines={2}>
+              {title}
+            </MealCategoryText>
+          </MealCategoryTextView>
         </MealCategoryView>
       </MealCategoryTouchableAndroid>
     </MealCategoryViewAndroid>
+  ) : (
+    <MealCategoryTouchable activeOpacity={0.5} onPress={action}>
+      <MealCategoryView color={color} width={width} theme={theme}>
+        <MealCategoryTextView theme={theme}>
+          <MealCategoryText theme={theme} numberOfLines={2}>
+            {title}
+          </MealCategoryText>
+        </MealCategoryTextView>
+      </MealCategoryView>
+    </MealCategoryTouchable>
   );
 };
 
