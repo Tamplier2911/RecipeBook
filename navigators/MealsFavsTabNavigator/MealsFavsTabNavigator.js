@@ -1,17 +1,14 @@
 import React, { useContext } from "react";
-import { View, Text } from "react-native";
 
 // navigator
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // navigators
 import MealsStackNavigator from "../MealsStackNavigator/MealsStackNavigator";
+import FavStackNavigator from "../FavsStackNavigator/FavsStackNavigator";
 
 // context
 import AppStore from "../../contexts/GlobalContext";
-
-// global styles
-import globalStyles from "../../constants/globalStyles";
 
 // sc
 import {
@@ -24,12 +21,6 @@ import {
 } from "./MealsFavsTabNavigator.styles";
 
 const MealsFavsTabNav = createBottomTabNavigator();
-
-const TempFavorites = () => (
-  <View>
-    <Text>Favs</Text>
-  </View>
-);
 
 const MealsFavsTabNavigator = () => {
   const { theme } = useContext(AppStore);
@@ -53,7 +44,7 @@ const MealsFavsTabNavigator = () => {
       }}
     >
       <MealsFavsTabNav.Screen name="Dishes" component={MealsStackNavigator} />
-      <MealsFavsTabNav.Screen name="Favorites" component={TempFavorites} />
+      <MealsFavsTabNav.Screen name="Favorites" component={FavStackNavigator} />
     </MealsFavsTabNav.Navigator>
   );
 };

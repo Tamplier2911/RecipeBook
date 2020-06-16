@@ -2,31 +2,20 @@ import React, { useContext } from "react";
 
 // navigator
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 
 // context
 import AppStore from "../../contexts/GlobalContext";
 
 // navigators
-import MealsFavsTabNavigator from "../../navigators/MealsFavsTabNavigator/MealsFavsTabNavigator";
-// import MealsStackNavigator from "../../navigators/MealsStackNavigator/MealsStackNavigator";
+import MainDrawerNavigator from "../../navigators/MainDrawerNavigator/MainDrawerNavigator";
 
 // components
 import StatusBar from "../../components/StatusBar/StatusBar";
 import Spinner from "../../components/Spinner/Spinner";
 import AddRecipeModal from "../../components/AddRecipeModal/AddRecipeModal";
 
-// screens
-import FavoritesScreen from "../FavoritesScreen/FavoritesScreen";
-import FiltersScreen from "../FiltersScreen/FiltersScreen";
-
 // sc
 import { RootLayout } from "./Layout.styles";
-
-// global styles
-import globalStyles from "../../constants/globalStyles";
-
-const Stack = createStackNavigator();
 
 const Layout = ({ fontLoaded }) => {
   const {
@@ -45,7 +34,7 @@ const Layout = ({ fontLoaded }) => {
     <RootLayout theme={theme}>
       {orientation === "portrait" ? <StatusBar /> : null}
       <NavigationContainer>
-        <MealsFavsTabNavigator />
+        <MainDrawerNavigator />
       </NavigationContainer>
       <AddRecipeModal />
     </RootLayout>

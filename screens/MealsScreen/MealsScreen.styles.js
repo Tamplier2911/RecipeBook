@@ -15,7 +15,3 @@ export const MealsScreenView = styled.View`
 export const MealsScreenFlatList = styled(FlatList)`
   flex: 1;
 `;
-
-export const MealView = styled.View``;
-
-export const MealText = styled.Text``;

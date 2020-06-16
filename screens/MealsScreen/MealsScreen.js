@@ -10,12 +10,7 @@ import MealDescription from "../../components/MealDescription/MealDescription";
 import { mealsData } from "../../constants/mealsData";
 
 // sc
-import {
-  MealsScreenView,
-  MealsScreenFlatList,
-  MealView,
-  MealText,
-} from "./MealsScreen.styles";
+import { MealsScreenView, MealsScreenFlatList } from "./MealsScreen.styles";
 
 const MealsScreen = ({ navigation, route }) => {
   const { theme } = useContext(AppStore);

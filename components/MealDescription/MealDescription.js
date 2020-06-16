@@ -17,7 +17,7 @@ import {
   MealDescriptionDataText,
 } from "./MealDescription.styles";
 
-const MealDescription = ({ meal, color, action }) => {
+const MealDescription = ({ meal, color, action, from }) => {
   const { theme, width } = useContext(AppStore);
   const { title, complexity, imageUrl, duration } = meal;
 
@@ -28,17 +28,21 @@ const MealDescription = ({ meal, color, action }) => {
           <MealDescriptionWrap>
             <MealDescriptionTitleView>
               <MealDescriptionTitleWrap theme={theme} color={color}>
-                <MealDescriptionTitle theme={theme} numberOfLines={1}>
+                <MealDescriptionTitle
+                  theme={theme}
+                  numberOfLines={1}
+                  from={from}
+                >
                   {title}
                 </MealDescriptionTitle>
               </MealDescriptionTitleWrap>
             </MealDescriptionTitleView>
             <MealDescriptionDataView>
               <MealDescriptionDataWrap theme={theme} color={color}>
-                <MealDescriptionDataText theme={theme}>
+                <MealDescriptionDataText theme={theme} from={from}>
                   {duration}min
                 </MealDescriptionDataText>
-                <MealDescriptionDataText theme={theme}>
+                <MealDescriptionDataText theme={theme} from={from}>
                   {complexity}
                 </MealDescriptionDataText>
               </MealDescriptionDataWrap>

@@ -10,9 +10,6 @@ import {
   MealDetailsScreenView,
   MealDetailsScreenTop,
   MealDetailsScreenText,
-  MealDetailsScreenBot,
-  MealDetailsButtonView,
-  MealDetailsButtonSeparator,
 } from "./MealDetailsScreen.styles";
 
 const MealDetailsScreen = ({ navigation, route }) => {
@@ -37,11 +34,6 @@ const MealDetailsScreen = ({ navigation, route }) => {
       <MealDetailsScreenTop>
         <MealDetailsScreenText>{title}</MealDetailsScreenText>
       </MealDetailsScreenTop>
-      <MealDetailsScreenBot>
-        <MealDetailsButtonView>
-          <Button title={"back"} onPress={() => navigate("Meals")} />
-        </MealDetailsButtonView>
-      </MealDetailsScreenBot>
     </MealDetailsScreenView>
   );
 };

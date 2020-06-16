@@ -12,6 +12,7 @@ export default {
     fontStyleLight: "latoLight",
     clPlaceholder: "rgba(100, 0, 240, 0.486)",
     clTabInactive: "rgba(256, 256, 256, 0.7)",
+    clDrawerOverlay: "rgba(100, 0, 240, 0.37)",
   },
   dark: {
     clPrimary: "#202020",
@@ -27,5 +28,6 @@ export default {
     fontStyleLight: "latoLight",
     clPlaceholder: "#BB86FC",
     clTabInactive: "#BB86FC",
+    clDrawerOverlay: "rgba(187, 134, 252, 0.315)",
   },
 };

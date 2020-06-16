@@ -1,17 +1,14 @@
 import React, { useContext } from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
 // context
 import AppStore from "../../contexts/GlobalContext";
 
-// navigator
-import { createStackNavigator } from "@react-navigation/stack";
-
 // screens
-import CategoriesScreen from "../../screens/CategoriesScreen/CategoriesScreen";
+import FavoritesScreen from "../../screens/FavoritesScreen/FavoritesScreen";
 import MealDetailsScreen from "../../screens/MealDetailsScreen/MealDetailsScreen";
-import MealsScreen from "../../screens/MealsScreen/MealsScreen";
 
-// components
+// component
 import HeaderRightContainer from "../../components/HeaderRightContainer/HeaderRightContainer";
 import HeaderLeftContainer from "../../components/HeaderLeftContainer/HeaderLeftContainer";
 
@@ -20,23 +17,20 @@ import globalStyles from "../../constants/globalStyles";
 
 // sc
 import {
-  // style function
+  // styling functions
   headerShadowProperties,
-  headerSharedBgColorProperties,
-  headerSharedTitleValueProperties,
   getSharedThemeColor,
-} from "./MealsStackNavigator.styles";
+  headerSharedTitleValueProperties,
+} from "./FavsStackNavigator.styles";
 
-const MealsStackNav = createStackNavigator();
+const FavStackNav = createStackNavigator();
 
-const MealsStackNavigator = () => {
+const FavsStackNavigator = () => {
   const { theme } = useContext(AppStore);
 
   return (
-    <MealsStackNav.Navigator
-      initialRouteName="Categories"
-      // mode="modal"
-      // stack shared options
+    <FavStackNav.Navigator
+      initialRouteName="Favorites"
       screenOptions={{
         headerStyle: {
           backgroundColor: `${globalStyles[theme].clPrimary}`,
@@ -50,10 +44,9 @@ const MealsStackNavigator = () => {
         headerRight: () => <HeaderRightContainer />,
       }}
     >
-      <MealsStackNav.Screen
-        name="Categories"
-        component={CategoriesScreen}
-        // stack screen own options
+      <FavStackNav.Screen
+        name="Favorites"
+        component={FavoritesScreen}
         options={({ navigation }) => ({
           title: "Categories",
           headerLeft: () => (
@@ -61,30 +54,20 @@ const MealsStackNavigator = () => {
           ),
         })}
       />
-      <MealsStackNav.Screen
-        name="Meals"
-        component={MealsScreen}
-        options={({ route }) => ({
-          title: headerSharedTitleValueProperties(route),
-          headerStyle: {
-            backgroundColor: headerSharedBgColorProperties(theme, route),
-            ...headerShadowProperties(theme),
-          },
-        })}
-      />
-      <MealsStackNav.Screen
+
+      <FavStackNav.Screen
         name="MealDetails"
         component={MealDetailsScreen}
         options={({ route }) => ({
           title: headerSharedTitleValueProperties(route),
           headerStyle: {
-            backgroundColor: headerSharedBgColorProperties(theme, route),
+            backgroundColor: `${globalStyles[theme].clPrimary}`,
             ...headerShadowProperties(theme),
           },
         })}
       />
-    </MealsStackNav.Navigator>
+    </FavStackNav.Navigator>
   );
 };
 
-export default MealsStackNavigator;
+export default FavsStackNavigator;
