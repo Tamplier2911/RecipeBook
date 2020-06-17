@@ -65,6 +65,13 @@ export const MealDescriptionTitle = styled.Text`
       : from === "favorites" && theme === "light"
       ? `color: ${globalStyles[theme].clPrimary};`
       : ``}
+
+  ${({ color, theme, from }) =>
+    color !== "#fff" && theme === "light" && from === "favorites"
+      ? `color: ${globalStyles[theme].clWhite};`
+      : color !== "#fff" && theme === "dark" && from === "favorites"
+      ? `color: ${globalStyles[theme].clHighlight};`
+      : ``}
 `;
 
 export const MealDescriptionDataView = styled.View`
@@ -90,11 +97,18 @@ export const MealDescriptionDataText = styled.Text`
     theme === "dark"
       ? globalStyles[theme].clHighlight
       : globalStyles[theme].clWhite};
-  ${({ from, theme }) =>
-    from === "favorites" && theme === "dark"
+  ${({ from, theme, color }) => {
+    return from === "favorites" && theme === "dark"
       ? `color: ${globalStyles[theme].clHighlight};`
       : from === "favorites" && theme === "light"
       ? `color: ${globalStyles[theme].clPrimary};`
+      : ``;
+  }}
+  ${({ color, theme, from }) =>
+    color !== "#fff" && theme === "light" && from === "favorites"
+      ? `color: ${globalStyles[theme].clWhite};`
+      : color !== "#fff" && theme === "dark" && from === "favorites"
+      ? `color: ${globalStyles[theme].clHighlight};`
       : ``}
   margin-right: 10px;
 `;

@@ -28,7 +28,7 @@ const Layout = ({ fontLoaded }) => {
     setThemeDark,
   } = useContext(AppStore);
 
-  console.log(platform, width, height, orientation);
+  // console.log(platform, width, height, orientation);
 
   return fontLoaded ? (
     <RootLayout theme={theme}>

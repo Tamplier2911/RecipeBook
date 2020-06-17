@@ -6,11 +6,7 @@ import AppStore from "../../contexts/GlobalContext";
 
 // navigators
 import MealsFavsTabNavigator from "../MealsFavsTabNavigator/MealsFavsTabNavigator";
-
-// components
-
-// global styles
-import globalStyles from "../../constants/globalStyles";
+import FiltersTabNavigator from "../FiltersTabNavigator/FiltersTabNavigator";
 
 // sc
 import {
@@ -26,14 +22,8 @@ import { View, Text } from "react-native";
 
 const MainDrawerNav = createDrawerNavigator();
 
-const PlaceholderComponentTwo = () => (
-  <View>
-    <Text>Drawerissimo 2</Text>
-  </View>
-);
-
 const MainDrawerNavigator = () => {
-  const { theme } = useContext(AppStore);
+  const { theme, orientation } = useContext(AppStore);
   return (
     <MainDrawerNav.Navigator
       initialRouteName="Kitchen"
@@ -41,7 +31,7 @@ const MainDrawerNavigator = () => {
       drawerPosition="left"
       drawerType="front"
       drawerStyle={{
-        width: "60%",
+        width: orientation === "portrait" ? "60%" : "30%",
         backgroundColor: getRespectiveDrawerBgColor(theme),
       }}
       overlayColor={getRespectiveDrawerOverlayColor(theme)}
@@ -61,10 +51,7 @@ const MainDrawerNavigator = () => {
       }}
     >
       <MainDrawerNav.Screen name="Kitchen" component={MealsFavsTabNavigator} />
-      <MainDrawerNav.Screen
-        name="Filters"
-        component={PlaceholderComponentTwo}
-      />
+      <MainDrawerNav.Screen name="Filters" component={FiltersTabNavigator} />
     </MainDrawerNav.Navigator>
   );
 };

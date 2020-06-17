@@ -41,6 +41,10 @@ const FavsStackNavigator = () => {
           fontFamily: "lato",
           color: getSharedThemeColor(theme, globalStyles),
         },
+        headerBackTitleStyle: {
+          fontFamily: "lato",
+          fontSize: 16,
+        },
         headerRight: () => <HeaderRightContainer />,
       }}
     >

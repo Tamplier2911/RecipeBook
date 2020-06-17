@@ -1,15 +1,12 @@
 import React, { useContext } from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
 // context
 import AppStore from "../../contexts/GlobalContext";
 
-// navigator
-import { createStackNavigator } from "@react-navigation/stack";
-
 // screens
-import CategoriesScreen from "../../screens/CategoriesScreen/CategoriesScreen";
+import FiltersScreen from "../../screens/FiltersScreen/FiltersScreen";
 import MealDetailsScreen from "../../screens/MealDetailsScreen/MealDetailsScreen";
-import MealsScreen from "../../screens/MealsScreen/MealsScreen";
 
 // components
 import HeaderRightContainer from "../../components/HeaderRightContainer/HeaderRightContainer";
@@ -20,23 +17,22 @@ import globalStyles from "../../constants/globalStyles";
 
 // sc
 import {
-  // style function
+  // styling functions
   headerShadowProperties,
+  getSharedThemeColor,
+  headerFilterTitleValueProperty,
   headerSharedBgColorProperties,
   headerSharedTitleValueProperties,
-  getSharedThemeColor,
-} from "./MealsStackNavigator.styles";
+} from "./FiltersStackNavigator.styles";
 
-const MealsStackNav = createStackNavigator();
+const GluFreeStackNav = createStackNavigator();
 
-const MealsStackNavigator = () => {
+const GlutenFreeStackNavigator = ({ route: { name } }) => {
   const { theme } = useContext(AppStore);
 
   return (
-    <MealsStackNav.Navigator
-      initialRouteName="Categories"
-      // mode="modal"
-      // stack shared options
+    <GluFreeStackNav.Navigator
+      initialRouteName="Lactose Free"
       screenOptions={{
         headerStyle: {
           backgroundColor: `${globalStyles[theme].clPrimary}`,
@@ -47,6 +43,7 @@ const MealsStackNavigator = () => {
           fontFamily: "lato",
           color: getSharedThemeColor(theme, globalStyles),
         },
+        // headerBack... has much more styles to be applied
         headerBackTitleStyle: {
           fontFamily: "lato",
           fontSize: 16,
@@ -54,29 +51,18 @@ const MealsStackNavigator = () => {
         headerRight: () => <HeaderRightContainer />,
       }}
     >
-      <MealsStackNav.Screen
-        name="Categories"
-        component={CategoriesScreen}
+      <GluFreeStackNav.Screen
+        name={name}
+        component={FiltersScreen}
         // stack screen own options
-        options={({ navigation }) => ({
-          title: "Categories",
+        options={({ navigation, route }) => ({
+          title: headerFilterTitleValueProperty(route),
           headerLeft: () => (
             <HeaderLeftContainer action={navigation.openDrawer} />
           ),
         })}
       />
-      <MealsStackNav.Screen
-        name="Meals"
-        component={MealsScreen}
-        options={({ route }) => ({
-          title: headerSharedTitleValueProperties(route),
-          headerStyle: {
-            backgroundColor: headerSharedBgColorProperties(theme, route),
-            ...headerShadowProperties(theme),
-          },
-        })}
-      />
-      <MealsStackNav.Screen
+      <GluFreeStackNav.Screen
         name="MealDetails"
         component={MealDetailsScreen}
         options={({ route }) => ({
@@ -87,8 +73,8 @@ const MealsStackNavigator = () => {
           },
         })}
       />
-    </MealsStackNav.Navigator>
+    </GluFreeStackNav.Navigator>
   );
 };
 
-export default MealsStackNavigator;
+export default GlutenFreeStackNavigator;

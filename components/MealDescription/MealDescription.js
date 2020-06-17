@@ -32,6 +32,7 @@ const MealDescription = ({ meal, color, action, from }) => {
                   theme={theme}
                   numberOfLines={1}
                   from={from}
+                  color={color}
                 >
                   {title}
                 </MealDescriptionTitle>
@@ -39,10 +40,18 @@ const MealDescription = ({ meal, color, action, from }) => {
             </MealDescriptionTitleView>
             <MealDescriptionDataView>
               <MealDescriptionDataWrap theme={theme} color={color}>
-                <MealDescriptionDataText theme={theme} from={from}>
+                <MealDescriptionDataText
+                  theme={theme}
+                  from={from}
+                  color={color}
+                >
                   {duration}min
                 </MealDescriptionDataText>
-                <MealDescriptionDataText theme={theme} from={from}>
+                <MealDescriptionDataText
+                  theme={theme}
+                  from={from}
+                  color={color}
+                >
                   {complexity}
                 </MealDescriptionDataText>
               </MealDescriptionDataWrap>

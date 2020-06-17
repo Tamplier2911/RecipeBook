@@ -10,8 +10,16 @@ export const MealDetailsScreenView = styled.View`
   padding: 10px;
 `;
 
-export const MealDetailsScreenTop = styled.ScrollView`
+export const MealDetailsScreenScrollView = styled.ScrollView`
   flex: 1;
+`;
+
+export const MealDetailsScreenWrapper = styled.View`
+  padding: 0 5px;
+`;
+
+export const MealDetailsScreenBlockView = styled.View`
+  margin-bottom: 10px;
 `;
 
 export const MealDetailsScreenText = styled.Text``;

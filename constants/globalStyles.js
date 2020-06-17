@@ -2,7 +2,7 @@ export default {
   light: {
     clPrimary: "#6200EE",
     clSecondary: "#FFFFFF",
-    clStatusBar: "#3700B3",
+    clStatusBar: "#4900af",
     clBlack: "#000",
     clWhite: "#fff",
     clShadow: "#777",
@@ -27,7 +27,7 @@ export default {
     fontStyle: "lato",
     fontStyleLight: "latoLight",
     clPlaceholder: "#BB86FC",
-    clTabInactive: "#BB86FC",
+    clTabInactive: "rgba(187, 134, 252, 0.561)",
     clDrawerOverlay: "rgba(187, 134, 252, 0.315)",
   },
 };

@@ -36,7 +36,10 @@ const MealsFavsTabNavigator = () => {
           borderTopWidth: getRespectiveBorderTopWidth(theme),
           backgroundColor: getRespectiveBgColor(theme),
         },
-
+        tabStyle: {},
+        labelStyle: {
+          fontFamily: "lato",
+        },
         // activeBackgroundColor: "pink",
         // inactiveBackgroundColor: "pink",
         activeTintColor: getRespectiveTintColor(theme),
