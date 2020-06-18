@@ -18,8 +18,6 @@ import {
   getRespectiveInactiveBgTintColor,
 } from "./MainDrawerNavigator.styles";
 
-import { View, Text } from "react-native";
-
 const MainDrawerNav = createDrawerNavigator();
 
 const MainDrawerNavigator = () => {

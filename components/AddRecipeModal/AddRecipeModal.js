@@ -16,6 +16,11 @@ import {
   AddRecipeModalTouchable,
   AddRecipeModalView,
   AddRecipeModalAvoidingView,
+  AddRecipeModalControlsView,
+  AddRecipeModalTextView,
+  AddRecipeModalText,
+  AddRecipeModalSwitchView,
+  AddRecipeModalSwitch,
   AddRecipeModalInputView,
   AddRecipeModalInput,
   AddRecipeModalButtonView,
@@ -27,8 +32,32 @@ const AddRecipeModal = () => {
     AppStore
   );
 
+  const [switchSate, setSwitchState] = useState(false);
+
+  // category state
   const [category, setCategory] = useState("");
   const [recipeDetails, setRecipeDetails] = useState("");
+
+  {
+    /* 
+    complexity,     / easy / medium / hard
+    imageUrl,       / url
+    duration,       / 10 
+    ingredients,    / potatoes, cucumbers
+    steps,          / do that, do this, then that
+    isGlutenFree,   / true / false - switch
+    isLactoseFree,  / true / false - switch
+    isVegan,        / true / false - switch
+    isVegetarian    / true / false - switch
+    */
+  }
+  // dish state
+
+  const [] = useState(); // picker easy medium hard
+  const [imageUrl, setImageUrl] = useState("");
+  const [duration, setDuration] = useState(""); // number?
+  // const [ingredients, setIngredients] = useState(""); // coma separated, then split
+  // const [steps, setSteps] = setSteps] = useState("");  //comma separated, then split
 
   const onAddRecipe = (recipeData) => {
     console.log(recipeData);
@@ -44,6 +73,31 @@ const AddRecipeModal = () => {
             behavior={platform === "ios" ? "padding" : "height"} // moves entire avoiding view
             // behavior="position" // moves only what inside of the view
           >
+            <AddRecipeModalControlsView theme={theme}>
+              <AddRecipeModalTextView>
+                <AddRecipeModalText theme={theme}>
+                  {switchSate ? "Add Recipe:" : "Add Category:"}
+                </AddRecipeModalText>
+              </AddRecipeModalTextView>
+              <AddRecipeModalSwitchView>
+                <AddRecipeModalSwitch
+                  trackColor={{
+                    false: globalStyles[theme].clSwitch,
+                    true: globalStyles[theme].clSwitch,
+                  }}
+                  thumbColor={
+                    theme === "dark"
+                      ? globalStyles[theme].clHighlight
+                      : globalStyles[theme].clPrimary
+                  }
+                  onValueChange={() =>
+                    setSwitchState((switchSate) => !switchSate)
+                  }
+                  value={switchSate}
+                />
+              </AddRecipeModalSwitchView>
+            </AddRecipeModalControlsView>
+
             <AddRecipeModalInputView theme={theme}>
               <AddRecipeModalInput
                 theme={theme}
@@ -61,17 +115,6 @@ const AddRecipeModal = () => {
                 placeholder="Enter Recipe Details"
                 theme={theme}
               />
-              {/* 
-              complexity,     / easy / medium / hard
-              imageUrl,       / url
-              duration,       / 10 
-              ingredients,    / potatoes, cucumbers
-              steps,          / do that, do this, then that
-              isGlutenFree,   / true / false - switch
-              isLactoseFree,  / true / false - switch
-              isVegan,        / true / false - switch
-              isVegetarian    / true / false - switch
-              */}
             </AddRecipeModalInputView>
             <AddRecipeModalButtonView theme={theme}>
               <AddRecipeButtonView>

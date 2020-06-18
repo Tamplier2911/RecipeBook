@@ -13,6 +13,10 @@ export default {
     clPlaceholder: "rgba(100, 0, 240, 0.486)",
     clTabInactive: "rgba(256, 256, 256, 0.7)",
     clDrawerOverlay: "rgba(100, 0, 240, 0.37)",
+    clPos: "#4ceb8e",
+    clNeg: "#eb4c4c",
+    clBtnIcon: "#fff",
+    clSwitch: "#eaeaea",
   },
   dark: {
     clPrimary: "#202020",
@@ -29,5 +33,9 @@ export default {
     clPlaceholder: "#BB86FC",
     clTabInactive: "rgba(187, 134, 252, 0.561)",
     clDrawerOverlay: "rgba(187, 134, 252, 0.315)",
+    clPos: "#BB86FC",
+    clNeg: "#BB86FC",
+    clBtnIcon: "#121212",
+    clSwitch: "#303030",
   },
 };

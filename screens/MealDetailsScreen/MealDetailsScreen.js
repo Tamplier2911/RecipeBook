@@ -6,6 +6,13 @@ import AppStore from "../../contexts/GlobalContext";
 // components
 import MealDescription from "../../components/MealDescription/MealDescription";
 import Button from "../../components/Button/Button";
+import Step from "../../components/Step/Step";
+import FilterIcon from "../../components/FiltersIcon/FiltersIcon";
+
+// iconinc
+import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+import { Octicons } from "@expo/vector-icons";
 
 // global styles
 import globalStyles from "../../constants/globalStyles";
@@ -16,12 +23,15 @@ import {
   MealDetailsScreenScrollView,
   MealDetailsScreenWrapper,
   MealDetailsScreenBlockView,
-  MealDetailsScreenText,
+  MealDetailsScreenBlockHeaderView,
+  MealDetailsScreenBlockHeaderText,
+  MealDetailsScreenFiltersWrap,
+  MealsDetailsScreenControlsView,
+  MealDetailsScreenButtonView,
 } from "./MealDetailsScreen.styles";
 
-const MealDetailsScreen = ({ navigation, route }) => {
+const MealDetailsScreen = ({ route }) => {
   const { theme } = useContext(AppStore);
-  const { navigate } = navigation;
 
   const { meal, color } = route.params;
 
@@ -38,6 +48,9 @@ const MealDetailsScreen = ({ navigation, route }) => {
     isVegetarian,
   } = meal;
 
+  const iconColor = globalStyles[theme].clBtnIcon;
+  const isFavorite = true;
+
   return (
     <MealDetailsScreenView theme={theme}>
       <MealDetailsScreenScrollView>
@@ -46,56 +59,87 @@ const MealDetailsScreen = ({ navigation, route }) => {
           color={color}
           {...(!color === "#fff" ? {} : { from: "favorites" })}
           action={() => {
-            /* toggle add to favorite on click */
+            /** he was a punk, she did ballet, what more can I say? */
           }}
         />
 
         <MealDetailsScreenWrapper>
-          {/* ingredients block */}
           <MealDetailsScreenBlockView>
-            <MealDetailsScreenText>required ingredients</MealDetailsScreenText>
+            <MealDetailsScreenBlockHeaderView>
+              <MealDetailsScreenBlockHeaderText theme={theme} color={color}>
+                Ingredients:
+              </MealDetailsScreenBlockHeaderText>
+            </MealDetailsScreenBlockHeaderView>
             {ingredients.map((el, id) => (
-              <MealDetailsScreenText key={el + id}>{el}</MealDetailsScreenText>
+              <Step key={el + id} color={color} theme={theme} content={el} />
             ))}
           </MealDetailsScreenBlockView>
 
-          {/* steps block */}
           <MealDetailsScreenBlockView>
-            <MealDetailsScreenText>required steps</MealDetailsScreenText>
+            <MealDetailsScreenBlockHeaderView>
+              <MealDetailsScreenBlockHeaderText theme={theme} color={color}>
+                Steps:
+              </MealDetailsScreenBlockHeaderText>
+            </MealDetailsScreenBlockHeaderView>
             {steps.map((el, id) => (
-              <MealDetailsScreenText key={el + id}>{el}</MealDetailsScreenText>
+              <Step key={el + id} color={color} theme={theme} content={el} />
             ))}
           </MealDetailsScreenBlockView>
 
-          {/* icons block */}
           <MealDetailsScreenBlockView>
-            <MealDetailsScreenText>
-              Gluten free: {isGlutenFree ? "V" : "X"}
-            </MealDetailsScreenText>
-            <MealDetailsScreenText>
-              Lactose free: {isLactoseFree ? "V" : "X"}
-            </MealDetailsScreenText>
-            <MealDetailsScreenText>
-              Vegan: {isVegan ? "V" : "X"}
-            </MealDetailsScreenText>
-            <MealDetailsScreenText>
-              Vegetarian: {isVegetarian ? "V" : "X"}
-            </MealDetailsScreenText>
+            <MealDetailsScreenFiltersWrap>
+              <FilterIcon
+                bool={isGlutenFree}
+                theme={theme}
+                content={"Gluten free:"}
+              />
+              <FilterIcon
+                bool={isLactoseFree}
+                theme={theme}
+                content={"Lactose free:"}
+              />
+              <FilterIcon bool={isVegan} theme={theme} content={"Vegan:"} />
+              <FilterIcon
+                bool={isVegetarian}
+                theme={theme}
+                content={"Vegetarian:"}
+              />
+            </MealDetailsScreenFiltersWrap>
           </MealDetailsScreenBlockView>
 
-          {/* controls block */}
           <MealDetailsScreenBlockView>
-            <MealDetailsScreenText>
-              tap on image in order to add / remove recipe to / from favorites
-              list
-            </MealDetailsScreenText>
+            <MealsDetailsScreenControlsView>
+              <MealDetailsScreenButtonView>
+                <Button
+                  title="Remove Recipe"
+                  icon={
+                    <Octicons name="trashcan" size={24} color={iconColor} />
+                  }
+                  onPress={() => console.log("remove recipe!")}
+                />
+              </MealDetailsScreenButtonView>
 
-            <Button
-              title="Remove Recipe"
-              onPress={() => console.log("remove recipe!")}
-            />
+              <MealDetailsScreenButtonView>
+                {isFavorite ? (
+                  <Button
+                    title="Remove from Favorite"
+                    icon={
+                      <FontAwesome name="star" size={24} color={iconColor} />
+                    }
+                    onPress={() => console.log("remove from favorites!")}
+                  />
+                ) : (
+                  <Button
+                    title="Add to Favorite"
+                    icon={
+                      <AntDesign name="staro" size={24} color={iconColor} />
+                    }
+                    onPress={() => console.log("add to favorites")}
+                  />
+                )}
+              </MealDetailsScreenButtonView>
+            </MealsDetailsScreenControlsView>
           </MealDetailsScreenBlockView>
-          {/*  */}
         </MealDetailsScreenWrapper>
       </MealDetailsScreenScrollView>
     </MealDetailsScreenView>

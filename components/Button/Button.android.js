@@ -9,9 +9,10 @@ import {
   ButtonAndroid,
   ButtonTitleWrapper,
   ButtonTitle,
+  ButtonIconView,
 } from "./Button.styles";
 
-const Button = ({ title, onPress }) => {
+const Button = ({ title, onPress, icon }) => {
   const { theme } = useContext(AppStore);
   return (
     <ButtonWrapperAndroid>
@@ -20,7 +21,11 @@ const Button = ({ title, onPress }) => {
         onPress={() => (onPress ? onPress() : null)}
       >
         <ButtonTitleWrapper theme={theme}>
-          <ButtonTitle theme={theme}>{title}</ButtonTitle>
+          {icon ? (
+            <ButtonIconView>{icon}</ButtonIconView>
+          ) : (
+            <ButtonTitle theme={theme}>{title}</ButtonTitle>
+          )}
         </ButtonTitleWrapper>
       </ButtonAndroid>
     </ButtonWrapperAndroid>

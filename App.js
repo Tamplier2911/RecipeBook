@@ -3,6 +3,7 @@ import { enableScreens } from "react-native-screens";
 
 // context
 import { GlobalStore } from "./contexts/GlobalContext";
+import { DataContext } from "./contexts/DataContext";
 
 // fonts
 import { useFonts } from "@use-expo/font";
@@ -20,7 +21,9 @@ const App = () => {
   });
   return (
     <GlobalStore>
-      <Layout fontLoaded={fontLoaded} />
+      <DataContext>
+        <Layout fontLoaded={fontLoaded} />
+      </DataContext>
     </GlobalStore>
   );
 };

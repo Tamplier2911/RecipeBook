@@ -17,7 +17,7 @@ import { categoriesData } from "../../constants/categoriesData";
 
 const CategoriesScreen = ({ navigation }) => {
   const { theme } = useContext(AppStore);
-  const { navigate, push } = navigation;
+  const { navigate } = navigation;
 
   // navigate - navigate to existing route, opens when there no such route on stack
   // push - push new route on to the stack, possibly with params

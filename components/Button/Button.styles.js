@@ -32,3 +32,8 @@ export const ButtonTitle = styled.Text`
   text-transform: uppercase;
   text-align: center;
 `;
+
+export const ButtonIconView = styled.View`
+  flex: 1;
+  align-items: center;
+`;
