@@ -58,3 +58,27 @@ export const MealCategoryText = styled.Text`
       : `color: ${globalStyles[theme].clPrimary};`}
   ${() => ({ textAlign: "right" })}
 `;
+
+export const MealCategoryDeleteView = styled.View`
+  flex: 1;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: ${({ theme }) =>
+    theme === "dark"
+      ? globalStyles[theme].clSecondary
+      : globalStyles[theme].clWhite};
+
+  bottom: 10px;
+  left: 10px;
+  overflow: hidden;
+`;
+
+export const MealCategoryDeleteTouchable = styled.TouchableOpacity`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const MealCategoryDeleteIconView = styled.View``;

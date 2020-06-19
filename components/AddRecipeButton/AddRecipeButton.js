@@ -17,11 +17,11 @@ import {
 } from "./AddRecipeButton.styles";
 
 const AddRecipeButton = () => {
-  const { theme, recipeModalHidden, toggleRecipeModel } = useContext(AppStore);
+  const { theme, recipeModalHidden, toggleRecipeModal } = useContext(AppStore);
   const isThemeDark = theme === "dark";
   const { clSecondary, clHighlight } = globalStyles[theme];
   return (
-    <AddRecipeButtonTouchable onPress={toggleRecipeModel}>
+    <AddRecipeButtonTouchable onPress={toggleRecipeModal}>
       <AddRecipeButtonView>
         <AddRecipeButtonText>
           {recipeModalHidden ? (

@@ -14,7 +14,10 @@ export const AddRecipeModalView = styled.View`
   justify-content: center;
 `;
 
-export const AddRecipeModalAvoidingView = styled.KeyboardAvoidingView``;
+export const AddRecipeModalAvoidingView = styled.KeyboardAvoidingView`
+  flex: 1;
+  justify-content: center;
+`;
 
 export const AddRecipeModalControlsView = styled.View`
   flex-direction: row;
@@ -83,6 +86,42 @@ export const AddRecipeModalButtonView = styled.View`
   border-bottom-right-radius: 5px;
 `;
 
-export const AddRecipeButtonView = styled.View`
+export const AddRecipeModalButtonWrap = styled.View`
   width: 48%;
 `;
+
+export const AddRecipeModalControlsRecView = styled.View`
+  flex-direction: row;
+  background-color: ${({ theme }) =>
+    theme === "dark"
+      ? globalStyles[theme].clPrimary
+      : globalStyles[theme].clSecondary};
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+export const AddRecipeModalControlsRecWrap = styled.View`
+  width: 48%;
+  flex-direction: row;
+  padding: 5px 0px;
+`;
+
+export const AddRecipeModalControlsRecTextView = styled.View`
+  flex: 1;
+  justify-content: center;
+`;
+
+export const AddRecipeModalControlsRecText = styled.Text`
+  font-family: lato;
+  font-size: 16px;
+  color: ${({ theme }) =>
+    theme === "dark"
+      ? globalStyles[theme].clHighlight
+      : globalStyles[theme].clPrimary};
+`;
+
+export const AddRecipeModalControlsRecSwitchView = styled.View`
+  justify-content: center;
+`;
+
+export const AddRecipeModalControlsRecSwitch = styled.Switch``;

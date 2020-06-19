@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 // navigator
 import { NavigationContainer } from "@react-navigation/native";
 
 // context
 import AppStore from "../../contexts/GlobalContext";
+import DataContext from "../../contexts/DataContext";
 
 // navigators
 import MainDrawerNavigator from "../../navigators/MainDrawerNavigator/MainDrawerNavigator";
@@ -12,23 +13,25 @@ import MainDrawerNavigator from "../../navigators/MainDrawerNavigator/MainDrawer
 // components
 import StatusBar from "../../components/StatusBar/StatusBar";
 import Spinner from "../../components/Spinner/Spinner";
+
+// modals
 import AddRecipeModal from "../../components/AddRecipeModal/AddRecipeModal";
+import DataConfirmationModal from "../../components/DataConfirmationModal/DataConfirmationModal";
 
 // sc
 import { RootLayout } from "./Layout.styles";
 
 const Layout = ({ fontLoaded }) => {
-  const {
-    theme,
-    platform,
-    width,
-    height,
-    orientation,
-    setThemeLight,
-    setThemeDark,
-  } = useContext(AppStore);
+  const { theme, orientation } = useContext(AppStore);
 
-  // console.log(platform, width, height, orientation);
+  const { categories, fetchAllCategories, fetchAllDishes } = useContext(
+    DataContext
+  );
+
+  useEffect(() => {
+    fetchAllCategories();
+    fetchAllDishes();
+  }, []);
 
   return fontLoaded ? (
     <RootLayout theme={theme}>
@@ -37,6 +40,7 @@ const Layout = ({ fontLoaded }) => {
         <MainDrawerNavigator />
       </NavigationContainer>
       <AddRecipeModal />
+      <DataConfirmationModal />
     </RootLayout>
   ) : (
     <Spinner size="large" />

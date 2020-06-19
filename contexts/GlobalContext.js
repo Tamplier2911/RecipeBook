@@ -63,9 +63,9 @@ export const GlobalStore = ({ children }) => {
   };
 
   /**
-   * @function ToggleRecipeModel - toggle recipe modal true / false
+   * @function ToggleRecipeModal - toggle recipe modal true / false
    */
-  const toggleRecipeModel = () => {
+  const toggleRecipeModal = () => {
     setAppGlobalState((appGlobalState) => ({
       ...appGlobalState,
       recipeModalHidden: !recipeModalHidden,
@@ -84,7 +84,7 @@ export const GlobalStore = ({ children }) => {
         setThemeLight,
         setThemeDark,
         recipeModalHidden,
-        toggleRecipeModel,
+        toggleRecipeModal,
       }}
     >
       {children}

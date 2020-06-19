@@ -29,11 +29,3 @@ const App = () => {
 };
 
 export default App;
-
-// npm install --save react-navigation-stack
-// Also add this import in the file where you are using createStackNavigator:
-// import { createStackNavigator } from 'react-navigation-stack';
-// npm install --save react-navigation-tabs
-// import { createBottomTabNavigator } from 'react-navigation-tabs';
-// npm install --save react-navigation-drawer
-// import { createDrawerNavigator } from 'react-navigation-drawer';

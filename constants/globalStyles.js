@@ -17,6 +17,7 @@ export default {
     clNeg: "#eb4c4c",
     clBtnIcon: "#fff",
     clSwitch: "#eaeaea",
+    clSwitchTrue: "#dcc4ff",
   },
   dark: {
     clPrimary: "#202020",
@@ -37,5 +38,6 @@ export default {
     clNeg: "#BB86FC",
     clBtnIcon: "#121212",
     clSwitch: "#303030",
+    clSwitchTrue: "#8962b9",
   },
 };

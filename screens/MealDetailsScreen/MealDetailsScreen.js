@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 // context
 import AppStore from "../../contexts/GlobalContext";
+import DataContext from "../../contexts/DataContext";
 
 // components
 import MealDescription from "../../components/MealDescription/MealDescription";
@@ -30,26 +31,32 @@ import {
   MealDetailsScreenButtonView,
 } from "./MealDetailsScreen.styles";
 
-const MealDetailsScreen = ({ route }) => {
+const MealDetailsScreen = ({ route, navigation }) => {
   const { theme } = useContext(AppStore);
+  const {
+    markDishAsFavorite,
+    removeFavoriteMarkFromDish,
+    openDataModal,
+  } = useContext(DataContext);
 
   const { meal, color } = route.params;
 
   const {
-    // title,
     // complexity,
     // imageUrl,
     // duration,
+    id,
+    title,
     ingredients,
     steps,
     isGlutenFree,
     isLactoseFree,
     isVegan,
     isVegetarian,
+    isFavorite,
   } = meal;
 
   const iconColor = globalStyles[theme].clBtnIcon;
-  const isFavorite = true;
 
   return (
     <MealDetailsScreenView theme={theme}>
@@ -115,7 +122,10 @@ const MealDetailsScreen = ({ route }) => {
                   icon={
                     <Octicons name="trashcan" size={24} color={iconColor} />
                   }
-                  onPress={() => console.log("remove recipe!")}
+                  onPress={() => {
+                    openDataModal(`${id}%${title}`);
+                    navigation.popToTop();
+                  }}
                 />
               </MealDetailsScreenButtonView>
 
@@ -124,9 +134,9 @@ const MealDetailsScreen = ({ route }) => {
                   <Button
                     title="Remove from Favorite"
                     icon={
-                      <FontAwesome name="star" size={24} color={iconColor} />
+                      <FontAwesome name="star" size={26.5} color={iconColor} />
                     }
-                    onPress={() => console.log("remove from favorites!")}
+                    onPress={() => removeFavoriteMarkFromDish(id)}
                   />
                 ) : (
                   <Button
@@ -134,7 +144,7 @@ const MealDetailsScreen = ({ route }) => {
                     icon={
                       <AntDesign name="staro" size={24} color={iconColor} />
                     }
-                    onPress={() => console.log("add to favorites")}
+                    onPress={() => markDishAsFavorite(id)}
                   />
                 )}
               </MealDetailsScreenButtonView>
