@@ -6,6 +6,7 @@ Cooking Recipe Book, using React Native, powered by Expo.
 
 Using React Navigation v5 to smoother native app behaviour.
 Drawer Navigation, Tab Navigation, Stack Navigation all nested and much much more fun.
+State managed using context api. Data persistence achieved using expo native AsyncStorage.
 
 ## Preview
 
